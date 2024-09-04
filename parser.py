@@ -7,7 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1PEMsW2tqU6gD5LHutzlFd24LSpa6O5PV
 """
 
-pip install streamlit
 
 import spacy
 
@@ -33,8 +32,6 @@ from pdfminer.high_level import extract_text
 
 def extract_text_from_pdf(pdf_path):
     return extract_text(pdf_path)
-
-import streamlit as st
 
 # Streamlit App
 st.title("Resume Parser")
