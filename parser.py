@@ -27,20 +27,6 @@ import streamlit as st
 
 model = spacy.load("/content/drive/MyDrive/Custom_NER/output/model-best")
 
-# Streamlit app
-st.title("Resume parsi ng")
-
-# Add an input field for user data
-input_data = st.text_input("Upload your resume")
-
-# Prediction
-if st.button("Predict"):
-    # Preprocess the input data as required by your model
-    processed_data = preprocess(input_data)  # Define this function
-    prediction = model.predict([processed_data])
-
-    st.write(f"Prediction: {prediction}")
-
 !pip install pdfminer.six
 
 from pdfminer.high_level import extract_text
