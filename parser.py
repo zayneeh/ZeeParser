@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1PEMsW2tqU6gD5LHutzlFd24LSpa6O5PV
 """
 
-!pip install streamlit
+pip install streamlit
 
 import spacy
 
@@ -19,15 +19,15 @@ drive.mount('/content/drive')
 
 import streamlit as st
 
-!pip install transformers
+pip install transformers
 
-!pip install --upgrade transformers
+pip install --upgrade transformers
 
-!pip install spacy_transformers
+pip install spacy_transformers
 
 model = spacy.load("/content/drive/MyDrive/Custom_NER/output/model-best")
 
-!pip install pdfminer.six
+pip install pdfminer.six
 
 from pdfminer.high_level import extract_text
 
