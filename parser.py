@@ -1,3 +1,4 @@
+pip install -r requirements.txt
 import spacy
 import streamlit as st
 from pdfminer.high_level import extract_text
