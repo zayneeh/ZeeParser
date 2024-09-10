@@ -1,37 +1,39 @@
-pip install --upgrade pip
 pip install -r requirements.txt
-import spacy
 import streamlit as st
-from pdfminer.high_level import extract_text
+import spacy
+import PyPDF2
 
-# Load the trained NER model
-model = spacy.load("/content/drive/MyDrive/Custom_NER/output/model-best")
+# Load your spaCy model
+nlp = spacy.load("path_to_your_model")
 
-# Function to extract text from PDF
-def extract_text_from_pdf(pdf_path):
-    return extract_text(pdf_path)
+# Title of the app
+st.title("NLP Resume Parsing App")
 
-# Function to parse resume using the NER model
-def parse_resume(text):
-    doc = model(text)
-    return [(ent.text, ent.label_) for ent in doc.ents]
+# File uploader for PDF
+uploaded_file = st.file_uploader("Upload a PDF Resume", type="pdf")
 
-# Streamlit App
-st.title("Resume Parser")
+# Function to extract text from PDF using PyPDF2
+def extract_text_from_pdf(pdf_file):
+    reader = PyPDF2.PdfReader(pdf_file)
+    text = ""
+    for page in reader.pages:
+        text += page.extract_text()
+    return text
 
-# File uploader for resume in PDF format
-uploaded_file = st.file_uploader("Upload Resume", type=["pdf"])
-
+# Process the uploaded file
 if uploaded_file is not None:
-    # Extract text from the uploaded PDF file
-    resume_text = extract_text_from_pdf(uploaded_file)
+    # Extract text from the uploaded PDF
+    pdf_text = extract_text_from_pdf(uploaded_file)
+    
+    # Display the extracted text
+    st.subheader("Extracted Text from PDF:")
+    st.write(pdf_text)
 
-    st.write("### Extracted Text")
-    st.write(resume_text)
-
-    # Parse the resume using the NER model
-    parsed_info = parse_resume(resume_text)
-
-    st.write("### Parsed Information")
-    for entity, label in parsed_info:
-        st.write(f"{label}: {entity}")
+    # Button to parse the text
+    if st.button("Parse"):
+        doc = nlp(pdf_text)
+        
+        # Display extracted entities
+        st.subheader("Extracted Entities:")
+        for ent in doc.ents:
+            st.write(f"{ent.text} ({ent.label_})")
