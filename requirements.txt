@@ -1,5 +1,5 @@
-spacy==3.1.3
-streamlit==1.3.0
-transformers==4.9.2
-spacy-transformers==1.1.5
-pdfminer.six==20201018
+streamlit
+spacy
+PyPDF2
+gdown
+os
