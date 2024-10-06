@@ -2,10 +2,11 @@ pip install -r requirements.txt
 import streamlit as st
 import spacy
 import PyPDF2
-import docx2txt  # For reading .docx files
+import docx2txt  
+import joblib
 
 # Load your spaCy model
-nlp = spacy.load("path/to/your/model")
+nlp = joblib.load('path/to/your/model/Parser.joblib')
 
 # Title of the app
 st.title("NLP Resume Parsing App")
