@@ -1,5 +1,4 @@
 streamlit
 spacy
 PyPDF2
-gdown
-os
+docx2txt
