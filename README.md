@@ -1,4 +1,4 @@
-# # ZeeParser
+# ZeeParser
 
 ## Project Overview
 This project develops a specialized resume parsing tool designed for the computer science field, utilizing Named Entity Recognition (NER) enhanced by RoBERTa with attention mechanisms. It aims to efficiently extract relevant information from resumes, such as skills, experience, education, and personal details.
