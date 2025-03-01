@@ -16,17 +16,3 @@ This project develops a specialized resume parsing tool designed for the compute
 
 
 
-graph TD
-    A[User] -->|HTTP Request| B[FastAPI]
-    B --> C{Endpoint}
-    C -->|/process-data| D[Data Loading]
-    C -->|/benchmark| E[Performance Comparison]
-    C -->|/download| F[File Delivery]
-    D --> G[Pandas/Polars Selection]
-    G --> H[Data Cleaning]
-    H --> I[Data Aggregation]
-    I --> J[Return JSON]
-    E --> K[Time Metrics]
-    K --> L[Return Benchmark Results]
-    F --> M[File Generation]
-    M --> N[Parquet/JSON Download]
